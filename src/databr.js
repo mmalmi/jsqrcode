@@ -135,7 +135,7 @@ function QRCodeDataBlockReader(blocks,  version,  numErrorCorrectionCode)
 			var length = dataLength;
 			var intData = 0;
 			var strData = "";
-			var tableRomanAndFigure = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '$', '%', '*', '+', '-', '.', '/', ':');
+			var tableRomanAndFigure = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '$', '%', '*', '+', '-', '.', '/', ':' ];
 			do 
 			{
 				if (length > 1)
@@ -196,7 +196,7 @@ function QRCodeDataBlockReader(blocks,  version,  numErrorCorrectionCode)
 		{
 			var length = dataLength;
 			var intData = 0;
-			var output = new Array();
+			var output = [];
 			
 			do 
 			{
@@ -231,7 +231,7 @@ function QRCodeDataBlockReader(blocks,  version,  numErrorCorrectionCode)
 					shiftjisWord = tempWord + 0xC140;
 				}
 				
-				//var tempByte = new Array(0,0);
+				//var tempByte = [0,0];
 				//tempByte[0] = (sbyte) (shiftjisWord >> 8);
 				//tempByte[1] = (sbyte) (shiftjisWord & 0xFF);
 				//unicodeString += new String(SystemUtils.ToCharArray(SystemUtils.ToByteArray(tempByte)));
@@ -246,7 +246,7 @@ function QRCodeDataBlockReader(blocks,  version,  numErrorCorrectionCode)
 
 	this.__defineGetter__("DataByte", function()
 	{
-		var output = new Array();
+		var output = [];
 		var MODE_NUMBER = 1;
 	    var MODE_ROMAN_AND_NUMBER = 2;
 	    var MODE_8BIT_BYTE = 4;

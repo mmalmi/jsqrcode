@@ -153,7 +153,7 @@ function FinderPatternFinder()
 	this.image=null;
 	this.possibleCenters = [];
 	this.hasSkipped = false;
-	this.crossCheckStateCount = new Array(0,0,0,0,0);
+	this.crossCheckStateCount = [0,0,0,0,0];
 	this.resultPointCallback = null;
 	
 	this.__defineGetter__("CrossCheckStateCount", function()

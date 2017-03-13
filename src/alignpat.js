@@ -65,13 +65,13 @@ function AlignmentPattern(posX, posY,  estimatedModuleSize)
 function AlignmentPatternFinder( image,  startX,  startY,  width,  height,  moduleSize,  resultPointCallback)
 {
 	this.image = image;
-	this.possibleCenters = new Array();
+	this.possibleCenters = [];
 	this.startX = startX;
 	this.startY = startY;
 	this.width = width;
 	this.height = height;
 	this.moduleSize = moduleSize;
-	this.crossCheckStateCount = new Array(0,0,0);
+	this.crossCheckStateCount = [0,0,0];
 	this.resultPointCallback = resultPointCallback;
 	
 	this.centerFromEnd=function(stateCount,  end)
@@ -191,7 +191,7 @@ function AlignmentPatternFinder( image,  startX,  startY,  width,  height,  modu
 			var middleI = startY + (height >> 1);
 			// We are looking for black/white/black modules in 1:1:1 ratio;
 			// this tracks the number of black/white/black modules seen so far
-			var stateCount = new Array(0,0,0);
+			var stateCount = [0,0,0];
 			for (var iGen = 0; iGen < height; iGen++)
 			{
 				// Search from middle outwards
