@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Web QR</title>
+
+	<script type="text/javascript" src="utf8.js"></script>
+	<script type="text/javascript" src="../src/grid.js"></script>
+	<script type="text/javascript" src="../src/version.js"></script>
+	<script type="text/javascript" src="../src/detector.js"></script>
+	<script type="text/javascript" src="../src/formatinf.js"></script>
+	<script type="text/javascript" src="../src/errorlevel.js"></script>
+	<script type="text/javascript" src="../src/bitmat.js"></script>
+	<script type="text/javascript" src="../src/datablock.js"></script>
+	<script type="text/javascript" src="../src/bmparser.js"></script>
+	<script type="text/javascript" src="../src/datamask.js"></script>
+	<script type="text/javascript" src="../src/rsdecoder.js"></script>
+	<script type="text/javascript" src="../src/gf256poly.js"></script>
+	<script type="text/javascript" src="../src/gf256.js"></script>
+	<script type="text/javascript" src="../src/decoder.js"></script>
+	<script type="text/javascript" src="../src/qrcode.js"></script>
+	<script type="text/javascript" src="../src/findpat.js"></script>
+	<script type="text/javascript" src="../src/alignpat.js"></script>
+	<script type="text/javascript" src="../src/databr.js"></script>
+
+	<script type="text/javascript" src="test.js"></script>
+
+</head>
+
+<body>
+	<div>
+		<input id="url" value="images/goodqrcode.png"><button onclick="btnLoadOnClick()">Load</button>
+		Press Ctrl+V to paste image
+	</div>
+	<div>
+		<video id="v" width="200" height="200" autoplay style="border: solid 1px silver;"></video>
+	</div>
+	<div>
+		<canvas id="qr-canvas" width="400" height="400" style="border: solid 1px silver"></canvas>
+		<canvas id="qr-canvas2" width="400" height="400" style="border: solid 1px silver"></canvas>
+	</div>
+	<div id="result"></div>
+	<audio id="beep" src="beep.wav"></audio>
+
+<script type="text/javascript">
+	load();
+</script>
+
+</body>
+
+</html>
