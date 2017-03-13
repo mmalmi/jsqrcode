@@ -335,8 +335,7 @@ function Detector(image)
 	this.sampleGrid=function( image,  transform,  dimension)
 		{
 			
-			var sampler = GridSampler;
-			return sampler.sampleGrid3(image, dimension, transform);
+			return GridSampler.sampleGrid3(image, dimension, transform);
 		}
 	
 	this.processFinderPatternInfo = function( info)

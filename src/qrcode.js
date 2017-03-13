@@ -128,12 +128,12 @@ qrcode.decode_utf8 = function ( s )
 
 qrcode.process = function(ctx){
     
-    var start = new Date().getTime();
+    //var start = new Date().getTime();
 
     var image = qrcode.grayScaleToBitmap(qrcode.grayscale());
     //var image = qrcode.binarize(128);
     
-    if(qrcode.debug)
+    if(qrcode.debug && ctx)
     {
         for (var y = 0; y < qrcode.height; y++)
         {
@@ -164,7 +164,7 @@ qrcode.process = function(ctx){
             qrcode.imagedata.data[point+2] = qRCodeMatrix.bits.get_Renamed(x,y)?255:0;
         }
     }*/
-    if(qrcode.debug)
+    if(qrcode.debug && ctx)
         ctx.putImageData(qrcode.imagedata, 0, 0);
     
     var reader = Decoder.decode(qRCodeMatrix.bits);
@@ -176,9 +176,9 @@ qrcode.process = function(ctx){
             str+=String.fromCharCode(data[i][j]);
     }
     
-    var end = new Date().getTime();
-    var time = end - start;
-    console.log(time);
+    //var end = new Date().getTime();
+    //var time = end - start;
+    // console.log(time);
     
     return qrcode.decode_utf8(str);
     //alert("Time:" + time + " Code: "+str);
@@ -313,8 +313,8 @@ function URShift( number,  bits)
 }
 
 
-Array.prototype.remove = function(from, to) {
-  var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from < 0 ? this.length + from : from;
-  return this.push.apply(this, rest);
-};
+// Array.prototype.remove = function(from, to) {
+//   var rest = this.slice((to || from) + 1 || this.length);
+//   this.length = from < 0 ? this.length + from : from;
+//   return this.push.apply(this, rest);
+// };

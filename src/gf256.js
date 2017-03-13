@@ -42,10 +42,8 @@ function GF256( primitive)
 		this.logTable[this.expTable[i]] = i;
 	}
 	// logTable[0] == 0 but this should never be used
-	var at0=new Array(1);at0[0]=0;
-	this.zero = new GF256Poly(this, new Array(at0));
-	var at1=new Array(1);at1[0]=1;
-	this.one = new GF256Poly(this, new Array(at1));
+	this.zero = new GF256Poly(this, [0]);
+	this.one = new GF256Poly(this, [1]);
 	
 	this.__defineGetter__("Zero", function()
 	{

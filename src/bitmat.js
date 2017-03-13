@@ -25,8 +25,8 @@
 
 function BitMatrix( width,  height)
 {
-	if(!height)
-		height=width;
+	height = height | width;
+
 	if (width < 1 || height < 1)
 	{
 		throw "Both dimensions must be greater than 0";

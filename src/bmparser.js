@@ -192,7 +192,8 @@ function BitMatrixParser(bitMatrix)
 						}
 					}
 				}
-				readingUp ^= true; // readingUp = !readingUp; // switch directions
+				//readingUp ^= true; // switch directions
+				readingUp = !readingUp; // switch directions
 			}
 			if (resultOffset != version.TotalCodewords)
 			{

@@ -27,14 +27,14 @@ function QRCodeDataBlockReader(blocks,  version,  numErrorCorrectionCode)
 {
 	this.blockPointer = 0;
 	this.bitPointer = 7;
-	this.dataLength = 0;
+	//this.dataLength = 0; is never used
 	this.blocks = blocks;
 	this.numErrorCorrectionCode = numErrorCorrectionCode;
 	if (version <= 9)
 		this.dataLengthMode = 0;
-	else if (version >= 10 && version <= 26)
+	else if (version <= 26)
 		this.dataLengthMode = 1;
-	else if (version >= 27 && version <= 40)
+	else if (version <= 40)
 		this.dataLengthMode = 2;
 		
 	this.getNextBits = function( numBits)
