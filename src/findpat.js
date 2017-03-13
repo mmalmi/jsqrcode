@@ -407,43 +407,53 @@ function FinderPatternFinder()
 					totalModuleSize += centerValue;
 					square += (centerValue * centerValue);
 				}
-				var average = totalModuleSize /  startSize;
-                this.possibleCenters.sort(function(center1,center2) {
-				      var dA=Math.abs(center2.EstimatedModuleSize - average);
-				      var dB=Math.abs(center1.EstimatedModuleSize - average);
-				      if (dA < dB) {
-				    	  return (-1);
-				      } else if (dA == dB) {
-				    	  return 0;
-				      } else {
-				    	  return 1;
-				      }
-					});
+				var average = totalModuleSize / startSize;
+				this.possibleCenters.sort(function (center1, center2) {
+					var dA = Math.abs(center2.EstimatedModuleSize - average);
+					var dB = Math.abs(center1.EstimatedModuleSize - average);
+					return dA - dB;
+				});
 
 				var stdDev = Math.sqrt(square / startSize - average * average);
 				var limit = Math.max(0.2 * average, stdDev);
-				for (var i = this.possibleCenters.length - 1; i >= 0 ; i--)
+
+				for (var i = 0; i < this.possibleCenters.length && this.possibleCenters.length > 3; /* none */)
 				{
 					var pattern =  this.possibleCenters[i];
-					//if (Math.abs(pattern.EstimatedModuleSize - average) > 0.2 * average)
                     if (Math.abs(pattern.EstimatedModuleSize - average) > limit)
 					{
-						this.possibleCenters.remove(i);
+						this.possibleCenters.splice(i, 1); //remove 1 item at index i
+					}
+					else
+					{
+						i++;
 					}
 				}
 			}
-			
+
 			if (this.possibleCenters.length > 3)
 			{
 				// Throw away all but those first size candidate points we found.
-				this.possibleCenters.sort(function(a, b){
-					if (a.count > b.count){return -1;}
-					if (a.count < b.count){return 1;}
-					return 0;
+				var totalModuleSize = 0;
+				for (var i = 0; i < this.possibleCenters.length; i++)
+				{
+					totalModuleSize += this.possibleCenters[i].EstimatedModuleSize;
+				}
+
+				var averageModuleSize = totalModuleSize / this.possibleCenters.length;
+
+				this.possibleCenters.sort(function (a, b)
+				{
+					var r = b.count - a.count;
+					if (r != 0) return r;
+
+					var dA = a.EstimatedModuleSize - averageModuleSize;
+					var dB = b.EstimatedModuleSize - averageModuleSize;
+					return dB - dA;
 				});
 			}
-			
-			return new Array( this.possibleCenters[0],  this.possibleCenters[1],  this.possibleCenters[2]);
+
+			return this.possibleCenters.slice(0, 3);
 		}
 		
 	this.findRowSkip=function()
